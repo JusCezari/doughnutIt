@@ -176,7 +176,7 @@ window.Chart = function(context){
 			onAnimationComplete : null,
 			labelFontFamily : "Arial",
 	        labelFontStyle : "normal",
-	        labelFontSize : 24,
+	        labelFontSize : '24px',
 	        labelFontColor : "#666",
 	        showTextInside : false,
 	        doughnutText : "",
@@ -212,13 +212,12 @@ window.Chart = function(context){
 
 			// Test if there will be some text inside the doughnut
 			if(config.showTextInside === true){
-				ctx.font = config.labelFontStyle + " " + config.labelFontSize+"px " + config.labelFontFamily;
+				console.log(config.labelFontSize);
+				ctx.font = config.labelFontStyle + " " + config.labelFontSize + " " + config.labelFontFamily;
 		        ctx.fillStyle = config.labelFontColor;
 		        ctx.textBaseline = 'middle';
 				if(config.doughnutText != ""){
 					ctx.fillText(config.doughnutText, width/2 - 45, width/2, 200);
-				}else{
-					ctx.fillText(data[0].value + "%", width/2 - 45, width/2, 200);
 				}
 			}
 

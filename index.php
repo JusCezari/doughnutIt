@@ -25,10 +25,6 @@
 	<script>
 
 		var doughnutData = [
-				// {value:5,color:"#f00"},
-				// {value:30,color:"#ff0"},
-				// {value:15,color:"#00f"},
-				// {value:50,color:"#0ff"}
 				{value:65,color:"#819596"},
 				{value:100-65,color:"#dce0df"}
 			];
@@ -42,17 +38,36 @@
 			dnAnimationEasing: 'linear',
 			dnStroke: false,
 			dnShowText: true,
-			dnFontSize: 70,
+			dnFontSize: '70px',
 			dnFontColor: "#adb8b4",
 			dnText: 'G1',
 			dnStartAngle: 90,
 			dnCounterClockwise: false,
 			dnRightCanvas: {
 				rcRadius: 15,
-	        	rcPreMargin: 20,
-	        	rcMargin: 20,
-	        	rcText: 'TESTE',
-	        	rcHeight: 200
+				rcPreMargin: 20,
+				rcMargin: 20,
+				rcHeight: 200,
+				rcOffset: 15,
+				rcSphereColor: '#819596',
+				rcSphereStroke: '#819596',				
+				rcTop:{
+					rcTopLineColor: '#00f',
+					rctAbove: {
+						rctText: 'MÉDIA',
+						rctFontColor: '#111',
+						rctFontSize: '20px',
+						rctFontFamily: 'Arial',
+						rctFontStyle: 'normal'
+					},
+					rctBelow: {
+						rctText: '6.5',
+						rctFontColor: '#111',
+						rctFontSize: '50px',
+						rctFontFamily: 'Arial',
+						rctFontStyle: 'normal'
+					}		        	
+				}
 			}
 		});
 

@@ -211,8 +211,7 @@ window.Chart = function(context){
 		function drawPieSegments (animationDecimal){
 
 			// Test if there will be some text inside the doughnut
-			if(config.showTextInside === true){
-				console.log(config.labelFontSize);
+			if(config.showTextInside === true){				
 				ctx.font = config.labelFontStyle + " " + config.labelFontSize + " " + config.labelFontFamily;
 		        ctx.fillStyle = config.labelFontColor;
 		        ctx.textBaseline = 'middle';

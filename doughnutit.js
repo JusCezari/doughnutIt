@@ -106,6 +106,8 @@
 	        	rcMargin: 10,	        	
 	        	// Height of the line from the middle line
 	        	rcHeight: 100,
+	        	// Width in coordinates for the greater line
+	        	rcLineWidth: 200,
 	        	// Default value for the top lane
 	        	rcTop: false,
 	        	// Default value for the bottom lane
@@ -141,7 +143,9 @@
 			  	ctx.stroke();
 			  	ctx.closePath();
 
-			  	/* TOP LANE STUFF */
+			  	/**********************************************************************/
+			  	/*************************** TOP LANE STUFF ***************************/
+			  	/**********************************************************************/
 		        // If there is a top lane
 		        if(rightSettings.rcTop !== false){
 
@@ -157,7 +161,11 @@
 			        	// Font style for the top lane
 			        	rcTopFontStyle: settings.dnFontStyle,
 			        	// Color of the line on top lane
-			        	rcTopLineColor: settings.dnFontColor,
+			        	rcTopLineColor: rightSettings.rcSphereColor,
+			        	// Value for the dashed lines
+			        	rcTopDashLine: 0,
+			        	// Width for the line
+			        	rcStrokeWidth: 3,
 			        	// Object for above top lanve
 			        	rctAbove: false,
 			        	// Object for below top lanve
@@ -167,10 +175,15 @@
 			        // Draw the LINES
 		        	ctx.beginPath();
 		        	ctx.strokeStyle = rcTopSettings.rcTopLineColor;
-					ctx.moveTo(10,c.height / 2);
-					ctx.lineTo(50,45);
+		        	ctx.lineWidth = rcTopSettings.rcStrokeWidth;
+		        	// If there is support for the dashed line
+		        	if(ctx.setLineDash){
+		        		ctx.setLineDash([rcTopSettings.rcTopDashLine]);
+		        	}
+					ctx.moveTo(rightSettings.rcRadius*2 , c.height / 2);
+					ctx.lineTo(rightSettings.rcPreMargin, (centerX-rightSettings.rcHeight) );
 					ctx.stroke();
-					ctx.lineTo(200,45);
+					ctx.lineTo( (rightSettings.rcPreMargin+rightSettings.rcMargin+rightSettings.rcLineWidth) , (centerX-rightSettings.rcHeight) );
 					ctx.stroke();
 					ctx.closePath();
 					
@@ -190,17 +203,19 @@
 				        	rctFontStyle: rcTopSettings.rctFontStyle,
 				        	// Text for above top lane
 				        	rctText: false,				        	
+				        	// Offset for text above top lane
+				        	rctOffset: 10
 				        }, rcTopSettings.rctAbove);
 
 						//Draw the TEXT ABOVE
 						ctx.fillStyle = rctSettings.rctFontColor;
 						ctx.font=rctSettings.rctFontStyle + " " + rctSettings.rctFontSize + " " + rctSettings.rctFontFamily;
-
+						ctx.textAlign = "right";
+						ctx.textBaseline = "bottom";
 						// TODO - Calc the position where the text will be draw
-						ctx.fillText(rctSettings.rctText, 136, 40);
+						ctx.fillText(rctSettings.rctText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX-rightSettings.rcHeight-rctSettings.rctOffset ) );
 						
 			        }
-
 
 			        /* BELOW TOP LANE STUFF */
 					// If there are something to draw below the line
@@ -217,16 +232,125 @@
 				        	// Font style for the top lane
 				        	rctFontStyle: rcTopSettings.rctFontStyle,
 				        	// Text for above top lane
-				        	rctText: false,				        	
+				        	rctText: false,
+				        	// Offset for text below top lane
+				        	rctOffset: 10
 				        }, rcTopSettings.rctBelow);
 
 						//Draw the TEXT BELOW
 						ctx.fillStyle = rctSettings.rctFontColor;
 						ctx.font=rctSettings.rctFontStyle + " " + rctSettings.rctFontSize + " " + rctSettings.rctFontFamily;
-
+						ctx.textAlign = "right";
+						ctx.textBaseline = "top";
 						// TODO - Calc the position where the text will be draw
-						ctx.fillText(rctSettings.rctText, 136, 140);
+						ctx.fillText(rctSettings.rctText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX-rightSettings.rcHeight+rctSettings.rctOffset ) );
+
+			        }
+					
+		        }
+
+		        /**********************************************************************/
+			  	/************************* BOTTOM LANE STUFF **************************/
+			  	/**********************************************************************/
+		        // If there is a bottom lane
+		        if(rightSettings.rcBottom !== false){
+
+		        	/* GENERIC BOTTOM LANE STUFF */
+	        		// These are the defaults values for BOTTOM lane in right CANVAS
+			        var rcBottomSettings = $.extend({
+			        	// Font family for the bottom lane
+			        	rcBottomFontFamily: settings.dnFontFamily,
+			        	// Font size for the bottom lane
+			        	rcBottomFontSize: settings.dnFontSize,
+			        	// Font color for the bottom lane
+			        	rcBottomFontColor: settings.dnFontColor,
+			        	// Font style for the bottom lane
+			        	rcBottomFontStyle: settings.dnFontStyle,
+			        	// Color of the line on bottom lane
+			        	rcBottomLineColor: rightSettings.rcSphereColor,
+			        	// Width for the line			        	
+			        	rcStrokeWidth: 3,
+			        	// Value for the dashed lines
+			        	rcBottomDashLine: 0,
+			        	// Object for above bottom lanve
+			        	rcbAbove: false,
+			        	// Object for below bottom lanve
+			        	rcbBelow: false
+			        }, rightSettings.rcBottom );
+
+			        // Draw the LINES
+		        	ctx.beginPath();
+		        	ctx.strokeStyle = rcBottomSettings.rcBottomLineColor;
+		        	ctx.lineWidth = rcBottomSettings.rcStrokeWidth;
+		        	// If there is support for the dashed line
+		        	if(ctx.setLineDash){
+		        		ctx.setLineDash([rcBottomSettings.rcBottomDashLine]);
+		        	}
+					ctx.moveTo(rightSettings.rcRadius*2 , c.height / 2);
+					ctx.lineTo(rightSettings.rcPreMargin, (centerX+rightSettings.rcHeight) );
+					ctx.stroke();
+					ctx.lineTo( (rightSettings.rcPreMargin+rightSettings.rcMargin+rightSettings.rcLineWidth) , (centerX+rightSettings.rcHeight) );
+					ctx.stroke();
+					ctx.closePath();
+					
+					/* ABOVE BOTTOM LANE STUFF */
+					// If there are something to draw above the line
+			        if(rcBottomSettings.rcbAbove !== false){
+			        	
+		        		// These are the defaults values for ABOVE TOP lane in right CANVAS
+				        var rcbSettings = $.extend({
+				        	// Font family for the top lane
+				        	rcbFontFamily: rcBottomSettings.rcbFontFamily,
+				        	// Font size for the top lane
+				        	rcbFontSize: rcBottomSettings.rcbFontSize,
+				        	// Font color for the top lane
+				        	rcbFontColor: rcBottomSettings.rcbFontColor,
+				        	// Font style for the top lane
+				        	rcbFontStyle: rcBottomSettings.rcbFontStyle,
+				        	// Text for above top lane
+				        	rcbText: false,				        	
+				        	// Offset for text above top lane
+				        	rcbOffset: 10
+				        }, rcBottomSettings.rcbAbove);
+
+						//Draw the TEXT ABOVE
+						ctx.fillStyle = rcbSettings.rcbFontColor;
+						ctx.font=rcbSettings.rcbFontStyle + " " + rcbSettings.rcbFontSize + " " + rcbSettings.rcbFontFamily;
+						ctx.textAlign = "right";
+						ctx.textBaseline = "bottom";
+						// TODO - Calc the position where the text will be draw
+						ctx.fillText(rcbSettings.rcbText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX+rightSettings.rcHeight-rcbSettings.rcbOffset ) );
 						
+			        }
+
+			        /* BELOW BOTTOM LANE STUFF */
+					// If there are something to draw below the line
+			        if(rcBottomSettings.rcbBelow !== false){
+			        	
+		        		// These are the defaults values for BELOW TOP lane in right CANVAS
+				        var rcbSettings = $.extend({
+				        	// Font family for the top lane
+				        	rcbFontFamily: rcBottomSettings.rcbFontFamily,
+				        	// Font size for the top lane
+				        	rcbFontSize: rcBottomSettings.rcbFontSize,
+				        	// Font color for the top lane
+				        	rcbFontColor: rcBottomSettings.rcbFontColor,
+				        	// Font style for the top lane
+				        	rcbFontStyle: rcBottomSettings.rcbFontStyle,
+				        	// Text for above top lane
+				        	rcbText: false,
+				        	// Offset for text below top lane
+				        	rcbOffset: 10
+				        }, rcBottomSettings.rcbBelow);
+
+						//Draw the TEXT BELOW
+						ctx.fillStyle = rcbSettings.rcbFontColor;
+						ctx.font=rcbSettings.rcbFontStyle + " " + rcbSettings.rcbFontSize + " " + rcbSettings.rcbFontFamily;
+						ctx.textAlign = "right";
+						ctx.textBaseline = "top";
+						// TODO - Calc the position where the text will be draw
+						ctx.fillText(rcbSettings.rcbText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX+rightSettings.rcHeight+rcbSettings.rcbOffset ) );
+
 			        }
 					
 		        }

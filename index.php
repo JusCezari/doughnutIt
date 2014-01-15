@@ -43,7 +43,7 @@
 			dnStroke: false,
 			dnShowText: true,
 			dnFontSize: '70px',
-			dnFontColor: "#adb8b4",
+			dnFontColor: "#819596",
 			dnText: 'G1',
 			dnStartAngle: 90,
 			dnCounterClockwise: false,
@@ -59,41 +59,30 @@
 				rcTop:{
 					rcTopLineColor: '#819596',
 					rcTopDashLine: 5,
+					rcTopFontSize: '20px',
 					rcStrokeWidth: 3,
 					rctAbove: {
 						rctText: 'MÉDIA',
-						rctFontColor: '#111',
-						rctFontSize: '20px',
-						rctFontFamily: 'Arial',
-						rctFontStyle: 'normal',
+						// rctFontSize: '20px',
 						rctOffset: 5
 					},
 					rctBelow: {
 						rctText: '6.5',
-						rctFontColor: '#111',
-						rctFontSize: '50px',
-						rctFontFamily: 'Arial',
-						rctFontStyle: 'normal',
+						// rctFontSize: '20px',
 						rctOffset: 5
 					}		        	
 				},
-				rcBottom:{
+				rcBottom:{					
+					rcBottomDashLine: 0,
+					rcBottomFontSize: '15px',
 					rcBottomLineColor: '#819596',
 					rcStrokeWidth: 3,
 					rcbAbove: {
-						rcbText: 'MÉDIA',
-						rcbFontColor: '#111',
-						rcbFontSize: '20px',
-						rcbFontFamily: 'Arial',
-						rcbFontStyle: 'normal',
+						rcbText: 'DATA DE G3',
 						rcbOffset: 5
 					},
 					rcbBelow: {
-						rcbText: '6.5',
-						rcbFontColor: '#111',
-						rcbFontSize: '50px',
-						rcbFontFamily: 'Arial',
-						rcbFontStyle: 'normal',
+						rcbText: '20/10/2013',
 						rcbOffset: 5
 					}		        	
 				}

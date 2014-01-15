@@ -114,13 +114,6 @@
 	        	rcBottom: false
 	        }, settings.dnRightCanvas );
 
-
-	        // Just some debugging
-	        console.log("RIGHT SETTINGS");
-	        console.log(rightSettings);
-
-
-
 	        // CIRCLE ON THE MIDDLE OF THE CANVAS STUFF
 	        if( (rightSettings.rcTop !== false) || (rightSettings.rcBottom !== false) ){
 
@@ -194,13 +187,13 @@
 		        		// These are the defaults values for ABOVE TOP lane in right CANVAS
 				        var rctSettings = $.extend({
 				        	// Font family for the top lane
-				        	rctFontFamily: rcTopSettings.rctFontFamily,
+				        	rctFontFamily: rcTopSettings.rcTopFontFamily,
 				        	// Font size for the top lane
-				        	rctFontSize: rcTopSettings.rctFontSize,
+				        	rctFontSize: rcTopSettings.rcTopFontSize,
 				        	// Font color for the top lane
-				        	rctFontColor: rcTopSettings.rctFontColor,
+				        	rctFontColor: rcTopSettings.rcTopFontColor,
 				        	// Font style for the top lane
-				        	rctFontStyle: rcTopSettings.rctFontStyle,
+				        	rctFontStyle: rcTopSettings.rcTopFontStyle,
 				        	// Text for above top lane
 				        	rctText: false,				        	
 				        	// Offset for text above top lane
@@ -224,13 +217,13 @@
 		        		// These are the defaults values for BELOW TOP lane in right CANVAS
 				        var rctSettings = $.extend({
 				        	// Font family for the top lane
-				        	rctFontFamily: rcTopSettings.rctFontFamily,
+				        	rctFontFamily: rcTopSettings.rcTopFontFamily,
 				        	// Font size for the top lane
-				        	rctFontSize: rcTopSettings.rctFontSize,
+				        	rctFontSize: rcTopSettings.rcTopFontSize,
 				        	// Font color for the top lane
-				        	rctFontColor: rcTopSettings.rctFontColor,
+				        	rctFontColor: rcTopSettings.rcTopFontColor,
 				        	// Font style for the top lane
-				        	rctFontStyle: rcTopSettings.rctFontStyle,
+				        	rctFontStyle: rcTopSettings.rcTopFontStyle,
 				        	// Text for above top lane
 				        	rctText: false,
 				        	// Offset for text below top lane
@@ -300,13 +293,13 @@
 		        		// These are the defaults values for ABOVE TOP lane in right CANVAS
 				        var rcbSettings = $.extend({
 				        	// Font family for the top lane
-				        	rcbFontFamily: rcBottomSettings.rcbFontFamily,
+				        	rcbFontFamily: rcBottomSettings.rcBottomFontFamily,
 				        	// Font size for the top lane
-				        	rcbFontSize: rcBottomSettings.rcbFontSize,
+				        	rcbFontSize: rcBottomSettings.rcBottomFontSize,
 				        	// Font color for the top lane
-				        	rcbFontColor: rcBottomSettings.rcbFontColor,
+				        	rcbFontColor: rcBottomSettings.rcBottomFontColor,
 				        	// Font style for the top lane
-				        	rcbFontStyle: rcBottomSettings.rcbFontStyle,
+				        	rcbFontStyle: rcBottomSettings.rcBottomFontStyle,
 				        	// Text for above top lane
 				        	rcbText: false,				        	
 				        	// Offset for text above top lane
@@ -330,13 +323,13 @@
 		        		// These are the defaults values for BELOW TOP lane in right CANVAS
 				        var rcbSettings = $.extend({
 				        	// Font family for the top lane
-				        	rcbFontFamily: rcBottomSettings.rcbFontFamily,
+				        	rcbFontFamily: rcBottomSettings.rcBottomFontFamily,
 				        	// Font size for the top lane
-				        	rcbFontSize: rcBottomSettings.rcbFontSize,
+				        	rcbFontSize: rcBottomSettings.rcBottomFontSize,
 				        	// Font color for the top lane
-				        	rcbFontColor: rcBottomSettings.rcbFontColor,
+				        	rcbFontColor: rcBottomSettings.rcBottomFontColor,
 				        	// Font style for the top lane
-				        	rcbFontStyle: rcBottomSettings.rcbFontStyle,
+				        	rcbFontStyle: rcBottomSettings.rcBottomFontStyle,
 				        	// Text for above top lane
 				        	rcbText: false,
 				        	// Offset for text below top lane

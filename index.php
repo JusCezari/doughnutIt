@@ -49,27 +49,52 @@
 			dnCounterClockwise: false,
 			dnRightCanvas: {
 				rcRadius: 15,
-				rcPreMargin: 20,
+				rcPreMargin: 100,
 				rcMargin: 20,
-				rcHeight: 200,
+				rcHeight: 100,
 				rcOffset: 15,
+				rcLineWidth: 200,
 				rcSphereColor: '#819596',
 				rcSphereStroke: '#819596',				
 				rcTop:{
-					rcTopLineColor: '#00f',
+					rcTopLineColor: '#819596',
+					rcTopDashLine: 5,
+					rcStrokeWidth: 3,
 					rctAbove: {
 						rctText: 'MÉDIA',
 						rctFontColor: '#111',
 						rctFontSize: '20px',
 						rctFontFamily: 'Arial',
-						rctFontStyle: 'normal'
+						rctFontStyle: 'normal',
+						rctOffset: 5
 					},
 					rctBelow: {
 						rctText: '6.5',
 						rctFontColor: '#111',
 						rctFontSize: '50px',
 						rctFontFamily: 'Arial',
-						rctFontStyle: 'normal'
+						rctFontStyle: 'normal',
+						rctOffset: 5
+					}		        	
+				},
+				rcBottom:{
+					rcBottomLineColor: '#819596',
+					rcStrokeWidth: 3,
+					rcbAbove: {
+						rcbText: 'MÉDIA',
+						rcbFontColor: '#111',
+						rcbFontSize: '20px',
+						rcbFontFamily: 'Arial',
+						rcbFontStyle: 'normal',
+						rcbOffset: 5
+					},
+					rcbBelow: {
+						rcbText: '6.5',
+						rcbFontColor: '#111',
+						rcbFontSize: '50px',
+						rcbFontFamily: 'Arial',
+						rcbFontStyle: 'normal',
+						rcbOffset: 5
 					}		        	
 				}
 			}

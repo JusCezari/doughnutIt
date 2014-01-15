@@ -29,6 +29,8 @@
 			dnFontSize: '190px',
 			// Color for the text inside
 			dnFontColor: "#666",
+			// Offset to stay in center
+			dnFontOffset: 35,
 			// Start angle for the first slice of the doughnut
 			dnStartAngle: -90,
 			// Animation in counter clockwise - HAS ISSUES
@@ -70,6 +72,7 @@
 	        labelFontStyle: settings.dnFontStyle,
 	        labelFontSize: settings.dnFontSize,
 	        labelFontColor: settings.dnFontColor,
+	        labelFontOffset: settings.dnFontOffset,
 	        showTextInside: settings.dnShowText,
 	        doughnutText: settings.dnText,
 	        degreeStart: settings.dnStartAngle,	
@@ -162,7 +165,15 @@
 			        	// Object for above top lanve
 			        	rctAbove: false,
 			        	// Object for below top lanve
-			        	rctBelow: false
+			        	rctBelow: false,
+			        	// Distance of the margin on the end of the angle on TOP lane
+			        	rcTopPreMargin: rightSettings.rcPreMargin,
+			        	// Distance before drawing the text TODO on TOP lane
+			        	rcTopMargin: rightSettings.rcMargin,
+			        	// Height of the line from the middle line on TOP lane
+			        	rcTopHeight: rightSettings.rcHeight,
+			        	// Width in coordinates for the greater line on TOP lane
+			        	rcTopLineWidth: rightSettings.rcLineWidth,
 			        }, rightSettings.rcTop );
 
 			        // Draw the LINES
@@ -174,9 +185,9 @@
 		        		ctx.setLineDash([rcTopSettings.rcTopDashLine]);
 		        	}
 					ctx.moveTo(rightSettings.rcRadius*2 , c.height / 2);
-					ctx.lineTo(rightSettings.rcPreMargin, (centerX-rightSettings.rcHeight) );
+					ctx.lineTo(rcTopSettings.rcTopPreMargin, (centerX-rcTopSettings.rcTopHeight) );
 					ctx.stroke();
-					ctx.lineTo( (rightSettings.rcPreMargin+rightSettings.rcMargin+rightSettings.rcLineWidth) , (centerX-rightSettings.rcHeight) );
+					ctx.lineTo( (rcTopSettings.rcTopPreMargin+rcTopSettings.rcTopMargin+rcTopSettings.rcTopLineWidth) , (centerX-rcTopSettings.rcTopHeight) );
 					ctx.stroke();
 					ctx.closePath();
 					
@@ -212,13 +223,13 @@
 						ctx.textAlign = "right";
 						ctx.textBaseline = "bottom";
 						// TODO - Calc the position where the text will be draw
-						ctx.fillText(rctaSettings.rctText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX-rightSettings.rcHeight-rctaSettings.rctOffset ) );
+						ctx.fillText(rctaSettings.rctText, ( rcTopSettings.rcTopLineWidth+rcTopSettings.rcTopPreMargin+rcTopSettings.rcTopMargin ) , ( centerX-rcTopSettings.rcTopHeight-rctaSettings.rctOffset ) );
 						
 						// Draw the IMAGE ABOVE
 						if(rctaSettings.rctImage !== false){
 							var cat = loadImg(rctaSettings.rctImage, function() {
 								ctx.font=rctaSettings.rctFontStyle + " " + rctaSettings.rctFontSize + " " + rctaSettings.rctFontFamily;
-								ctx.drawImage(cat, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin-cat.width-ctx.measureText(rctaSettings.rctText).width-rctaSettings.rctImageOffsetRight ) , ( centerX-rightSettings.rcHeight-rctaSettings.rctOffset-cat.height-rctaSettings.rctImageOffsetBottom ) );
+								ctx.drawImage(cat, ( rcTopSettings.rcTopLineWidth+rcTopSettings.rcTopPreMargin+rcTopSettings.rcTopMargin-cat.width-ctx.measureText(rctaSettings.rctText).width-rctaSettings.rctImageOffsetRight ) , ( centerX-rcTopSettings.rcTopHeight-rctaSettings.rctOffset-cat.height-rctaSettings.rctImageOffsetBottom ) );
 							});
 						}
 			        }
@@ -255,13 +266,13 @@
 						ctx.textAlign = "right";
 						ctx.textBaseline = "top";
 						// TODO - Calc the position where the text will be draw
-						ctx.fillText(rctbSettings.rctText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX-rightSettings.rcHeight+rctbSettings.rctOffset ) );
+						ctx.fillText(rctbSettings.rctText, ( rcTopSettings.rcTopLineWidth+rcTopSettings.rcTopPreMargin+rcTopSettings.rcTopMargin ) , ( centerX-rcTopSettings.rcTopHeight+rctbSettings.rctOffset ) );
 
 						// Draw the IMAGE BELOW
 						if(rctbSettings.rctImage !== false){							
 							var cat = loadImg(rctbSettings.rctImage, function() {
 							ctx.font=rctbSettings.rctFontStyle + " " + rctbSettings.rctFontSize + " " + rctbSettings.rctFontFamily;
- 							ctx.drawImage(cat, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin-cat.width-ctx.measureText(rctbSettings.rctText).width-rctbSettings.rctImageOffsetRight ) , ( centerX-rightSettings.rcHeight+rctbSettings.rctOffset-rctbSettings.rctImageOffsetBottom ) );
+ 							ctx.drawImage(cat, ( rcTopSettings.rcTopLineWidth+rcTopSettings.rcTopPreMargin+rcTopSettings.rcTopMargin-cat.width-ctx.measureText(rctbSettings.rctText).width-rctbSettings.rctImageOffsetRight ) , ( centerX-rcTopSettings.rcTopHeight+rctbSettings.rctOffset-rctbSettings.rctImageOffsetBottom ) );
 						});
 
 						}
@@ -295,7 +306,15 @@
 			        	// Object for above bottom lanve
 			        	rcbAbove: false,
 			        	// Object for below bottom lanve
-			        	rcbBelow: false
+			        	rcbBelow: false,
+			        	// Distance of the margin on the end of the angle on BOTTOM lane
+			        	rcBottomPreMargin: rightSettings.rcPreMargin,
+			        	// Distance before drawing the text TODO on BOTTOM lane
+			        	rcBottomMargin: rightSettings.rcMargin,
+			        	// Height of the line from the middle line on BOTTOM lane
+			        	rcBottomHeight: rightSettings.rcHeight,
+			        	// Width in coordinates for the greater line on BOTTOM lane
+			        	rcBottomLineWidth: rightSettings.rcLineWidth,
 			        }, rightSettings.rcBottom );
 
 			        // Draw the LINES
@@ -307,9 +326,9 @@
 		        		ctx.setLineDash([rcBottomSettings.rcBottomDashLine]);
 		        	}
 					ctx.moveTo(rightSettings.rcRadius*2 , c.height / 2);
-					ctx.lineTo(rightSettings.rcPreMargin, (centerX+rightSettings.rcHeight) );
+					ctx.lineTo(rcBottomSettings.rcBottomPreMargin, (centerX+rcBottomSettings.rcBottomHeight) );
 					ctx.stroke();
-					ctx.lineTo( (rightSettings.rcPreMargin+rightSettings.rcMargin+rightSettings.rcLineWidth) , (centerX+rightSettings.rcHeight) );
+					ctx.lineTo( (rcBottomSettings.rcBottomPreMargin+rcBottomSettings.rcBottomMargin+rcBottomSettings.rcBottomLineWidth) , (centerX+rcBottomSettings.rcBottomHeight) );
 					ctx.stroke();
 					ctx.closePath();
 					
@@ -345,13 +364,13 @@
 						ctx.textAlign = "right";
 						ctx.textBaseline = "bottom";
 						// TODO - Calc the position where the text will be draw
-						ctx.fillText(rcbaSettings.rcbText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX+rightSettings.rcHeight-rcbaSettings.rcbOffset ) );
+						ctx.fillText(rcbaSettings.rcbText, ( rcBottomSettings.rcBottomLineWidth+rcBottomSettings.rcBottomPreMargin+rcBottomSettings.rcBottomMargin ) , ( centerX+rcBottomSettings.rcBottomHeight-rcbaSettings.rcbOffset ) );
 						
 						// Draw the IMAGE ABOVE
 						if(rcbaSettings.rcbImage !== false){
 							var cat = loadImg(rcbaSettings.rcbImage, function() {
 								ctx.font=rcbaSettings.rcbFontStyle + " " + rcbaSettings.rcbFontSize + " " + rcbaSettings.rcbFontFamily;
-								ctx.drawImage(cat, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin-cat.width-ctx.measureText(rcbaSettings.rcbText).width-rcbaSettings.rcbImageOffsetRight ) , ( centerX+rightSettings.rcHeight-rcbaSettings.rcbOffset-cat.height-rcbaSettings.rcbImageOffsetBottom ) );
+								ctx.drawImage(cat, ( rcBottomSettings.rcBottomLineWidth+rcBottomSettings.rcBottomPreMargin+rcBottomSettings.rcBottomMargin-cat.width-ctx.measureText(rcbaSettings.rcbText).width-rcbaSettings.rcbImageOffsetRight ) , ( centerX+rcBottomSettings.rcBottomHeight-rcbaSettings.rcbOffset-cat.height-rcbaSettings.rcbImageOffsetBottom ) );
 							});
 						}
 						
@@ -389,14 +408,14 @@
 						ctx.textAlign = "right";
 						ctx.textBaseline = "top";
 						// TODO - Calc the position where the text will be draw
-						ctx.fillText(rcbbSettings.rcbText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX+rightSettings.rcHeight+rcbbSettings.rcbOffset ) );
+						ctx.fillText(rcbbSettings.rcbText, ( rcBottomSettings.rcBottomLineWidth+rcBottomSettings.rcBottomPreMargin+rcBottomSettings.rcBottomMargin ) , ( centerX+rcBottomSettings.rcBottomHeight+rcbbSettings.rcbOffset ) );
 
 						// Draw the IMAGE BELOW
 						if(rcbbSettings.rcbImage !== false){
 							
 							var cat = loadImg(rcbbSettings.rcbImage, function() {
 								ctx.font=rcbbSettings.rcbFontStyle + " " + rcbbSettings.rcbFontSize + " " + rcbbSettings.rcbFontFamily;
-								ctx.drawImage(cat, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin-cat.width-ctx.measureText(rcbbSettings.rcbText).width-rcbbSettings.rcbImageOffsetRight ) , ( centerX+rightSettings.rcHeight+rcbbSettings.rcbOffset-rcbbSettings.rcbImageOffsetBottom ) );
+								ctx.drawImage(cat, ( rcBottomSettings.rcBottomLineWidth+rcBottomSettings.rcBottomPreMargin+rcBottomSettings.rcBottomMargin-cat.width-ctx.measureText(rcbbSettings.rcbText).width-rcbbSettings.rcbImageOffsetRight ) , ( centerX+rcBottomSettings.rcBottomHeight+rcbbSettings.rcbOffset-rcbbSettings.rcbImageOffsetBottom ) );
 							});
 									
 						}
@@ -411,13 +430,14 @@
 
     };
 
-}( jQuery ));
+    // Function to load an image and return an Image() Object
+    function loadImg(src, callback) {
+	    var img = new Image();
+	    img.onload = callback;
+	    img.src = src;
+	    return img;
+	}
 
-function loadImg(src, callback) {
-    var img = new Image();
-    img.onload = callback;
-    img.src = src;
-    return img;
-}
+}( jQuery ));
 
 // TODO - All default params follow through the hierarchy

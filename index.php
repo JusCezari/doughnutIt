@@ -9,6 +9,10 @@
 		<!-- Jquery -->
 		<script src="jquery.js"></script>
 
+		<!--[if lt IE 9]>
+		    <script src="excanvas.js"></script>
+		<![endif]-->
+
 		<!-- Script com o plugin -->
 		<script src="doughnutit.js"></script>
 		<!-- Folha de estilos -->

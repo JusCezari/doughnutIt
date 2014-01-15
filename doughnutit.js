@@ -185,7 +185,7 @@
 			        if(rcTopSettings.rctAbove !== false){
 			        	
 		        		// These are the defaults values for ABOVE TOP lane in right CANVAS
-				        var rctSettings = $.extend({
+				        var rctaSettings = $.extend({
 				        	// Font family for the top lane
 				        	rctFontFamily: rcTopSettings.rcTopFontFamily,
 				        	// Font size for the top lane
@@ -197,17 +197,30 @@
 				        	// Text for above top lane
 				        	rctText: false,				        	
 				        	// Offset for text above top lane
-				        	rctOffset: 10
+				        	rctOffset: 10,
+				        	// Image on the left side
+				        	rctImage: false,
+				        	// Offset for image from the left side
+				        	rctImageOffsetRight: 0,
+				        	// Offset for image from the bottom
+				        	rctImageOffsetBottom: 0
 				        }, rcTopSettings.rctAbove);
 
 						//Draw the TEXT ABOVE
-						ctx.fillStyle = rctSettings.rctFontColor;
-						ctx.font=rctSettings.rctFontStyle + " " + rctSettings.rctFontSize + " " + rctSettings.rctFontFamily;
+						ctx.fillStyle = rctaSettings.rctFontColor;
+						ctx.font=rctaSettings.rctFontStyle + " " + rctaSettings.rctFontSize + " " + rctaSettings.rctFontFamily;
 						ctx.textAlign = "right";
 						ctx.textBaseline = "bottom";
 						// TODO - Calc the position where the text will be draw
-						ctx.fillText(rctSettings.rctText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX-rightSettings.rcHeight-rctSettings.rctOffset ) );
+						ctx.fillText(rctaSettings.rctText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX-rightSettings.rcHeight-rctaSettings.rctOffset ) );
 						
+						// Draw the IMAGE ABOVE
+						if(rctaSettings.rctImage !== false){
+							var cat = loadImg(rctaSettings.rctImage, function() {
+								ctx.font=rctaSettings.rctFontStyle + " " + rctaSettings.rctFontSize + " " + rctaSettings.rctFontFamily;
+								ctx.drawImage(cat, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin-cat.width-ctx.measureText(rctaSettings.rctText).width-rctaSettings.rctImageOffsetRight ) , ( centerX-rightSettings.rcHeight-rctaSettings.rctOffset-cat.height-rctaSettings.rctImageOffsetBottom ) );
+							});
+						}
 			        }
 
 			        /* BELOW TOP LANE STUFF */
@@ -215,7 +228,7 @@
 			        if(rcTopSettings.rctBelow !== false){
 			        	
 		        		// These are the defaults values for BELOW TOP lane in right CANVAS
-				        var rctSettings = $.extend({
+				        var rctbSettings = $.extend({
 				        	// Font family for the top lane
 				        	rctFontFamily: rcTopSettings.rcTopFontFamily,
 				        	// Font size for the top lane
@@ -227,17 +240,31 @@
 				        	// Text for above top lane
 				        	rctText: false,
 				        	// Offset for text below top lane
-				        	rctOffset: 10
+				        	rctOffset: 10,
+				        	// Image on the left side
+				        	rctImage: false,
+				        	// Offset for image from the left side
+				        	rctImageOffsetRight: 0,
+				        	// Offset for image from the bottom
+				        	rctImageOffsetBottom: 0
 				        }, rcTopSettings.rctBelow);
 
 						//Draw the TEXT BELOW
-						ctx.fillStyle = rctSettings.rctFontColor;
-						ctx.font=rctSettings.rctFontStyle + " " + rctSettings.rctFontSize + " " + rctSettings.rctFontFamily;
+						ctx.fillStyle = rctbSettings.rctFontColor;
+						ctx.font=rctbSettings.rctFontStyle + " " + rctbSettings.rctFontSize + " " + rctbSettings.rctFontFamily;
 						ctx.textAlign = "right";
 						ctx.textBaseline = "top";
 						// TODO - Calc the position where the text will be draw
-						ctx.fillText(rctSettings.rctText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX-rightSettings.rcHeight+rctSettings.rctOffset ) );
+						ctx.fillText(rctbSettings.rctText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX-rightSettings.rcHeight+rctbSettings.rctOffset ) );
 
+						// Draw the IMAGE BELOW
+						if(rctbSettings.rctImage !== false){							
+							var cat = loadImg(rctbSettings.rctImage, function() {
+							ctx.font=rctbSettings.rctFontStyle + " " + rctbSettings.rctFontSize + " " + rctbSettings.rctFontFamily;
+ 							ctx.drawImage(cat, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin-cat.width-ctx.measureText(rctbSettings.rctText).width-rctbSettings.rctImageOffsetRight ) , ( centerX-rightSettings.rcHeight+rctbSettings.rctOffset-rctbSettings.rctImageOffsetBottom ) );
+						});
+
+						}
 			        }
 					
 		        }
@@ -291,7 +318,7 @@
 			        if(rcBottomSettings.rcbAbove !== false){
 			        	
 		        		// These are the defaults values for ABOVE TOP lane in right CANVAS
-				        var rcbSettings = $.extend({
+				        var rcbaSettings = $.extend({
 				        	// Font family for the top lane
 				        	rcbFontFamily: rcBottomSettings.rcBottomFontFamily,
 				        	// Font size for the top lane
@@ -303,16 +330,30 @@
 				        	// Text for above top lane
 				        	rcbText: false,				        	
 				        	// Offset for text above top lane
-				        	rcbOffset: 10
+				        	rcbOffset: 10,
+				        	// Image on the left side
+				        	rcbImage: false,
+				        	// Offset for image from the left side
+				        	rcbImageOffsetRight: 0,
+							// Offset for image from the bottom
+				        	rcbImageOffsetBottom: 0
 				        }, rcBottomSettings.rcbAbove);
 
 						//Draw the TEXT ABOVE
-						ctx.fillStyle = rcbSettings.rcbFontColor;
-						ctx.font=rcbSettings.rcbFontStyle + " " + rcbSettings.rcbFontSize + " " + rcbSettings.rcbFontFamily;
+						ctx.fillStyle = rcbaSettings.rcbFontColor;
+						ctx.font=rcbaSettings.rcbFontStyle + " " + rcbaSettings.rcbFontSize + " " + rcbaSettings.rcbFontFamily;
 						ctx.textAlign = "right";
 						ctx.textBaseline = "bottom";
 						// TODO - Calc the position where the text will be draw
-						ctx.fillText(rcbSettings.rcbText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX+rightSettings.rcHeight-rcbSettings.rcbOffset ) );
+						ctx.fillText(rcbaSettings.rcbText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX+rightSettings.rcHeight-rcbaSettings.rcbOffset ) );
+						
+						// Draw the IMAGE ABOVE
+						if(rcbaSettings.rcbImage !== false){
+							var cat = loadImg(rcbaSettings.rcbImage, function() {
+								ctx.font=rcbaSettings.rcbFontStyle + " " + rcbaSettings.rcbFontSize + " " + rcbaSettings.rcbFontFamily;
+								ctx.drawImage(cat, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin-cat.width-ctx.measureText(rcbaSettings.rcbText).width-rcbaSettings.rcbImageOffsetRight ) , ( centerX+rightSettings.rcHeight-rcbaSettings.rcbOffset-cat.height-rcbaSettings.rcbImageOffsetBottom ) );
+							});
+						}
 						
 			        }
 
@@ -321,7 +362,7 @@
 			        if(rcBottomSettings.rcbBelow !== false){
 			        	
 		        		// These are the defaults values for BELOW TOP lane in right CANVAS
-				        var rcbSettings = $.extend({
+				        var rcbbSettings = $.extend({
 				        	// Font family for the top lane
 				        	rcbFontFamily: rcBottomSettings.rcBottomFontFamily,
 				        	// Font size for the top lane
@@ -333,16 +374,32 @@
 				        	// Text for above top lane
 				        	rcbText: false,
 				        	// Offset for text below top lane
-				        	rcbOffset: 10
+				        	rcbOffset: 10,
+				        	// Image on the left side
+				        	rcbImage: false,
+				        	// Offset for image from the left side
+				        	rcbImageOffsetRight: 0,
+				        	// Offset for image from the bottom
+				        	rcbImageOffsetBottom: 0
 				        }, rcBottomSettings.rcbBelow);
 
 						//Draw the TEXT BELOW
-						ctx.fillStyle = rcbSettings.rcbFontColor;
-						ctx.font=rcbSettings.rcbFontStyle + " " + rcbSettings.rcbFontSize + " " + rcbSettings.rcbFontFamily;
+						ctx.fillStyle = rcbbSettings.rcbFontColor;
+						ctx.font=rcbbSettings.rcbFontStyle + " " + rcbbSettings.rcbFontSize + " " + rcbbSettings.rcbFontFamily;
 						ctx.textAlign = "right";
 						ctx.textBaseline = "top";
 						// TODO - Calc the position where the text will be draw
-						ctx.fillText(rcbSettings.rcbText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX+rightSettings.rcHeight+rcbSettings.rcbOffset ) );
+						ctx.fillText(rcbbSettings.rcbText, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin ) , ( centerX+rightSettings.rcHeight+rcbbSettings.rcbOffset ) );
+
+						// Draw the IMAGE BELOW
+						if(rcbbSettings.rcbImage !== false){
+							
+							var cat = loadImg(rcbbSettings.rcbImage, function() {
+								ctx.font=rcbbSettings.rcbFontStyle + " " + rcbbSettings.rcbFontSize + " " + rcbbSettings.rcbFontFamily;
+								ctx.drawImage(cat, ( rightSettings.rcLineWidth+rightSettings.rcPreMargin+rightSettings.rcMargin-cat.width-ctx.measureText(rcbbSettings.rcbText).width-rcbbSettings.rcbImageOffsetRight ) , ( centerX+rightSettings.rcHeight+rcbbSettings.rcbOffset-rcbbSettings.rcbImageOffsetBottom ) );
+							});
+									
+						}
 
 			        }
 					
@@ -355,5 +412,12 @@
     };
 
 }( jQuery ));
+
+function loadImg(src, callback) {
+    var img = new Image();
+    img.onload = callback;
+    img.src = src;
+    return img;
+}
 
 // TODO - All default params follow through the hierarchy

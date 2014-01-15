@@ -34,8 +34,8 @@
 			];
 
 		$( "#myDoughnut" ).doughnutit({
+			dnData: doughnutData,
 		    dnSize: 450,
-		    dnData: doughnutData,
 		    dnInnerCutout: 60,
 		    dnAnimation: true,
 			dnAnimationSteps: 60,
@@ -61,15 +61,21 @@
 					rcTopDashLine: 5,
 					rcTopFontSize: '20px',
 					rcStrokeWidth: 3,
-					rctAbove: {
+					rctAbove: {						
 						rctText: 'MÉDIA',
-						// rctFontSize: '20px',
-						rctOffset: 5
+						rctOffset: 5,
+						rctImageOffsetRight: 5,
+						rctImageOffsetBottom: 0,
+						// rctImage: 'calendar.png',
 					},
 					rctBelow: {
 						rctText: '6.5',
-						// rctFontSize: '20px',
-						rctOffset: 5
+						rctFontSize: '50px',
+						rctOffset: 15,
+						rctOffset: 5,
+						rctImageOffsetRight: 5,
+						rctImageOffsetBottom: 0,
+						// rctImage: 'calendar.png'
 					}		        	
 				},
 				rcBottom:{					
@@ -78,12 +84,19 @@
 					rcBottomLineColor: '#819596',
 					rcStrokeWidth: 3,
 					rcbAbove: {
+						// rcbImage: 'calendar.png',
+						rcbImageOffsetBottom: 0,
+						rcbImageOffsetRight: 5,
 						rcbText: 'DATA DE G3',
+						rcbFontSize: '20px',
 						rcbOffset: 5
 					},
 					rcbBelow: {
+						// rcbImage: 'calendar.png',
+						rcbImageOffsetRight: 5,
+						rcbImageOffsetBottom: 0,
 						rcbText: '20/10/2013',
-						rcbOffset: 5
+						rcbOffset: 10
 					}		        	
 				}
 			}

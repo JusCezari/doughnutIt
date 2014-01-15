@@ -217,7 +217,7 @@ window.Chart = function(context){
 		        ctx.textBaseline = 'middle';
 	        	// TODO - Use the text width to calc the offset to always be in the center
 				if(config.doughnutText != ""){
-					ctx.fillText(config.doughnutText, width/2 - 45, width/2, 200);
+					ctx.fillText(config.doughnutText, width/2 - config.labelFontOffset, width/2, 200);
 				}
 			}
 

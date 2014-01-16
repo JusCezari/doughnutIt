@@ -38,9 +38,9 @@
 	<script>
 
 		var doughnutData = [
-				{value:65,color:"#819596"},
-				{value:100-65,color:"#dce0df"}
-			];
+			{value:65,color:"#819596"},
+			{value:100-65,color:"#dce0df"}
+		];
 
 		$( "#myDoughnut" ).doughnutit({
 			dnData: doughnutData,
@@ -101,11 +101,64 @@
 						rcbOffset: 5
 					},
 					rcbBelow: {
-						// rcbImage: 'calendar.png',
+						rcbImage: 'calendar.png',
 						rcbImageOffsetRight: 5,
 						rcbImageOffsetBottom: 0,
 						rcbText: '20/10/2013',
 						rcbOffset: 10
+					}		        	
+				}
+			},
+			dnLeftCanvas: {
+				lcRadius: 15,
+				lcPreMargin: 100,
+				lcMargin: 20,
+				lcHeight: 100,
+				lcOffset: 15,
+				lcLineWidth: 200,
+				lcSphereColor: '#819596',
+				lcSphereStroke: '#819596',				
+				lcTop:{
+					lcTopLineColor: '#819596',
+					lcTopDashLine: 5,
+					lcTopFontSize: '20px',
+					lcStrokeWidth: 3,
+					lctAbove: {						
+						lctText: 'NOTA G1',
+						lctOffset: 5,
+						lctImageOffsetRight: 5,
+						lctImageOffsetBottom: 0,
+						// lctImage: 'calendar.png',
+					},
+					lctBelow: {
+						lctText: '8.4',
+						lctFontSize: '50px',
+						lctOffset: 15,
+						lctOffset: 5,
+						lctImageOffsetRight: 5,
+						lctImageOffsetBottom: 0,
+						// lctImage: 'calendar.png'
+					}		        	
+				},
+				lcBottom:{					
+					lcBottomDashLine: 0,
+					lcBottomFontSize: '15px',
+					lcBottomLineColor: '#819596',
+					lcStrokeWidth: 3,
+					lcbAbove: {
+						// lcbImage: 'calendar.png',
+						lcbImageOffsetBottom: 0,
+						lcbImageOffsetRight: 5,
+						lcbText: 'NOTA G2',
+						lcbFontSize: '20px',
+						lcbOffset: 5
+					},
+					lcbBelow: {
+						lcbImage: 'calendar.png',
+						lcbImageOffsetRight: -10,
+						lcbImageOffsetBottom: 1,
+						lcbText: '10/02/1994',
+						lcbOffset: 10
 					}		        	
 				}
 			}
@@ -216,8 +269,8 @@
 			dnAnimationEasing: 'linear',
 			dnStroke: false,
 			dnShowText: true,
-			dnFontSize: '30px',
-			dnFontOffset: 20,
+			dnFontSize: '50px',
+			dnFontOffset: 30,
 			dnFontColor: "#819596",
 			dnText: 'G1',
 			dnStartAngle: 0,
@@ -305,8 +358,8 @@
 			dnAnimationEasing: 'linear',
 			dnStroke: false,
 			dnShowText: true,
-			dnFontSize: '30px',
-			dnFontOffset: 20,
+			dnFontSize: '90px',
+			dnFontOffset: 60,
 			dnFontColor: "#819596",
 			dnText: 'G1',
 			dnStartAngle: -90,
